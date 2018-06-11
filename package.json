@@ -1,0 +1,54 @@
+{
+    "name": "@vamship/grunt-typedoc",
+    "version": "1.0.0",
+    "description": "Grunt task to generate type docs for a given project",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vamship/grunt-typedoc.git"
+    },
+    "keywords": [
+        "grunt",
+        "typescript",
+        "documentation"
+    ],
+    "author": "Vamshi K Ponnapalli <vamshi.ponnapalli@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "@vamship/grunt-utils": "^1.0.3",
+        "@vamship/test-utils": "^2.0.2",
+        "chai": "^4.1.2",
+        "chai-as-promised": "^7.1.1",
+        "docdash": "^0.4.0",
+        "grunt": "^1.0.3",
+        "grunt-bump": "^0.8.0",
+        "grunt-contrib-clean": "^1.1.0",
+        "grunt-contrib-watch": "^1.1.0",
+        "grunt-eslint": "^20.1.0",
+        "grunt-jsdoc": "^2.2.1",
+        "grunt-mocha-istanbul": "^5.0.2",
+        "grunt-prettier": "^0.5.1",
+        "istanbul": "^0.4.5",
+        "load-grunt-tasks": "^4.0.0",
+        "mocha": "^5.2.0",
+        "rewire": "^4.0.1",
+        "sinon": "^5.0.10",
+        "sinon-chai": "^3.1.0",
+        "time-grunt": "^1.4.0"
+    },
+    "dependencies": {
+        "@vamship/arg-utils": "^2.0.4",
+        "@vamship/error-types": "^1.2.2"
+    },
+    "peerDependencies": {
+        "grunt": "^1.0.1",
+        "typedoc": "^0.11.1"
+    },
+    "bugs": {
+        "url": "https://github.com/vamship/grunt-typedoc/issues"
+    },
+    "homepage": "https://github.com/vamship/grunt-typedoc#readme"
+}
