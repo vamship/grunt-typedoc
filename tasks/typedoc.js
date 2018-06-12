@@ -32,7 +32,6 @@ const typedocTask = function(grunt) {
                     'Options must define "out" or "json" as a valid string'
                 );
             }
-            grunt.log.writeln(this);
 
             if (this.filesSrc.length <= 0) {
                 throw new ArgError(
