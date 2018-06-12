@@ -1,10 +1,10 @@
-{
+
     "test/unit/*-spec.js": {
-        "alternate": "src/{}.js",
+        "alternate": "tasks/{}.js",
         "type": "unit"
     },
-    "src/*.js": {
+    "tasks/*.js": {
         "alternate": "test/unit/{}-spec.js",
-        "type": "src"
+        "type": "tasks"
     }
 }

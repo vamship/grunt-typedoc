@@ -12,7 +12,7 @@ const ObjectMock = _testUtils.ObjectMock;
 
 const { ArgError } = require('@vamship/error-types').args;
 
-let _typedoc = _rewire('../../../src/tasks/typedoc');
+let _typedoc = _rewire('../../tasks/typedoc');
 
 describe('typedoc', function() {
     let _gruntMock = null;

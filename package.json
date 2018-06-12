@@ -2,10 +2,6 @@
     "name": "@vamship/grunt-typedoc",
     "version": "1.0.0",
     "description": "Grunt task to generate type docs for a given project",
-    "main": "src/index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/vamship/grunt-typedoc.git"
@@ -41,7 +37,8 @@
     },
     "dependencies": {
         "@vamship/arg-utils": "^2.0.4",
-        "@vamship/error-types": "^1.2.2"
+        "@vamship/error-types": "^1.2.2",
+        "typedoc": "^0.11.1"
     },
     "peerDependencies": {
         "grunt": "^1.0.1",

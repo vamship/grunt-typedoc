@@ -82,7 +82,7 @@ module.exports = function(grunt) {
      * Project structure and static parameters.
      * ---------------------------------------------------------------------- */
     const PROJECT = Directory.createTree('./', {
-        src: null,
+        tasks: null,
         test: {
             unit: null
         },
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
     });
 
     // Shorthand references to key folders.
-    const SRC = PROJECT.getChild('src');
+    const SRC = PROJECT.getChild('tasks');
     const TEST = PROJECT.getChild('test');
     const DOCS = PROJECT.getChild('docs');
     const NODE_MODULES = PROJECT.getChild('node_modules');
