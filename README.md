@@ -6,6 +6,10 @@ This is a grunt wrapper for the [typedoc](http://typedoc.org) tool that allows
 the generation of documentation from typescript sources files using the grunt
 task runner.
 
+## API Documentation
+
+API documentation can be found [here](https://vamship.github.io/grunt-typedoc).
+
 ## Motivation
 
 Generating documentation from source code is a good practice to have, and most
