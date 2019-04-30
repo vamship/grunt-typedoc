@@ -14,8 +14,8 @@
     "author": "Vamshi K Ponnapalli <vamshi.ponnapalli@gmail.com>",
     "license": "MIT",
     "devDependencies": {
-        "@vamship/grunt-utils": "^1.2.2",
-        "@vamship/test-utils": "^2.2.3",
+        "@vamship/grunt-utils": "^1.3.0",
+        "@vamship/test-utils": "^2.3.2",
         "chai": "^4.2.0",
         "chai-as-promised": "^7.1.1",
         "docdash": "^1.1.0",
@@ -36,8 +36,8 @@
         "time-grunt": "^2.0.0"
     },
     "dependencies": {
-        "@vamship/arg-utils": "^2.2.2",
-        "@vamship/error-types": "^1.5.2",
+        "@vamship/arg-utils": "^2.3.0",
+        "@vamship/error-types": "^1.6.0",
         "typedoc": "^0.14.2"
     },
     "peerDependencies": {
