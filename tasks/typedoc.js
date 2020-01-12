@@ -35,7 +35,7 @@ const typedocTask = function(grunt) {
 
             if (this.filesSrc.length <= 0) {
                 throw new ArgError(
-                    'No input files to generates documentation from'
+                    'No input files to generate documentation from'
                 );
             }
             const { out, json } = options;
@@ -46,7 +46,11 @@ const typedocTask = function(grunt) {
                 grunt.log.writeln(message);
             };
 
-            const app = new _typedoc.Application(options);
+            const app = new _typedoc.Application();
+            // Enable TypeDoc option reading from typedoc.json + tsconfig.json
+            app.options.addReader(new _typedoc.TSConfigReader());
+            app.options.addReader(new _typedoc.TypeDocReader());
+            app.bootstrap(options);
             const expandedFileList = app.expandInputFiles(this.filesSrc);
             const result = app.convert(expandedFileList);
             if (!result) {
