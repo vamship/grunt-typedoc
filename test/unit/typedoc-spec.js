@@ -31,21 +31,33 @@ describe('typedoc', function() {
             `${_testValues.getString('bar')}.ts`
         ];
 
-        const application = new ObjectMock()
+        const applicationOpts = new ObjectMock().addMock('addReader');
+        const application = new ObjectMock({
+            options: applicationOpts.instance
+        })
             .addMock('convert', () => {
                 return application.__conversionResult;
             })
             .addMock('generateDocs')
             .addMock('generateJson')
+            .addMock('bootstrap')
             .addMock('expandInputFiles', () => {
                 return application.__expandedFileList;
             });
         application.__conversionResult = {};
         application.__expandedFileList = [];
 
+        const tsConfigReader = new ObjectMock();
+        const typeDocReader = new ObjectMock();
+
         _typeDocMock = {
+            __applicationOptions: applicationOpts,
             __Application: application,
-            Application: application.ctor
+            __TSConfigReader: tsConfigReader,
+            __TypeDocReader: typeDocReader,
+            Application: application.ctor,
+            TSConfigReader: tsConfigReader.ctor,
+            TypeDocReader: typeDocReader.ctor
         };
 
         _typedoc.__set__('_typedoc', _typeDocMock);
@@ -145,7 +157,7 @@ describe('typedoc', function() {
         });
 
         it('should throw an error if no input files are specified', () => {
-            const message = 'No input files to generates documentation from';
+            const message = 'No input files to generate documentation from';
             const task = _initTask();
 
             const wrapper = () => {
@@ -168,8 +180,71 @@ describe('typedoc', function() {
             task();
             expect(applicationCtorMock).to.have.been.calledOnce;
             expect(applicationCtorMock).to.have.been.calledWithNew;
+            expect(applicationCtorMock).to.have.been.calledWithExactly();
+        });
 
-            const options = applicationCtorMock.args[0][0];
+        it('should create a reader for tsconfig files and add it to application options', () => {
+            const addReaderMock =
+                _typeDocMock.__applicationOptions.mocks.addReader;
+            const tsConfigReaderMock = _typeDocMock.__TSConfigReader;
+
+            const task = _initTask();
+
+            expect(tsConfigReaderMock.ctor).to.not.have.been.called;
+            expect(addReaderMock.stub).to.not.have.been.called;
+
+            task();
+
+            expect(tsConfigReaderMock.ctor).to.have.been.calledOnce;
+            expect(tsConfigReaderMock.ctor).to.have.been.calledWithNew;
+            expect(tsConfigReaderMock.ctor).to.have.been.calledWithExactly();
+
+            expect(addReaderMock.stub).to.have.been.called;
+            const targetCall = addReaderMock.stub.getCall(0);
+            expect(targetCall).to.have.been.calledWithExactly(
+                tsConfigReaderMock.instance
+            );
+        });
+
+        it('should create a reader for typedoc config files and add it to application options', () => {
+            const addReaderMock =
+                _typeDocMock.__applicationOptions.mocks.addReader;
+            const typeDocReaderMock = _typeDocMock.__TypeDocReader;
+
+            const task = _initTask();
+
+            expect(typeDocReaderMock.ctor).to.not.have.been.called;
+            expect(addReaderMock.stub).to.not.have.been.called;
+
+            task();
+
+            expect(typeDocReaderMock.ctor).to.have.been.calledOnce;
+            expect(typeDocReaderMock.ctor).to.have.been.calledWithNew;
+            expect(typeDocReaderMock.ctor).to.have.been.calledWithExactly();
+
+            expect(addReaderMock.stub).to.have.been.called;
+            const targetCall = addReaderMock.stub.getCall(0);
+            expect(targetCall).to.have.been.calledWithExactly(
+                typeDocReaderMock.instance
+            );
+        });
+
+        it('should bootstrap the application with the specified options', () => {
+            const expectedOptions = {
+                out: './outdir',
+                json: './out.json'
+            };
+            const task = _initTask(expectedOptions);
+
+            const bootstrapMock = _typeDocMock.__Application.mocks.bootstrap;
+
+            expect(bootstrapMock.stub).to.not.have.been.called;
+
+            task();
+
+            expect(bootstrapMock.stub).to.have.been.calledOnce;
+
+            const options = bootstrapMock.stub.args[0][0];
             delete expectedOptions.out;
             delete expectedOptions.json;
             delete options.logger;
@@ -179,14 +254,15 @@ describe('typedoc', function() {
         it('should inject a logger object into the options', () => {
             const task = _initTask();
 
-            const applicationCtorMock = _typeDocMock.Application;
+            const bootstrapMock = _typeDocMock.__Application.mocks.bootstrap;
 
-            expect(applicationCtorMock).to.not.have.been.called;
+            expect(bootstrapMock.stub).to.not.have.been.called;
+
             task();
-            expect(applicationCtorMock).to.have.been.calledOnce;
-            expect(applicationCtorMock).to.have.been.calledWithNew;
 
-            const { logger } = applicationCtorMock.args[0][0];
+            expect(bootstrapMock.stub).to.have.been.calledOnce;
+
+            const { logger } = bootstrapMock.stub.args[0][0];
             expect(logger).to.be.a('function');
         });
 
