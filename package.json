@@ -35,11 +35,10 @@
     "dependencies": {
         "@vamship/arg-utils": "^2.4.3",
         "@vamship/error-types": "^1.7.4",
-        "typedoc": "^0.15.0"
+        "typedoc": "^0.16.1"
     },
     "peerDependencies": {
-        "grunt": "^1.0.4",
-        "typedoc": "^0.15.0"
+        "grunt": "^1.0.4"
     },
     "bugs": {
         "url": "https://github.com/vamship/grunt-typedoc/issues"
