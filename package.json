@@ -10,13 +10,22 @@
         "all": "gulp --series format lint test-unit clean",
         "test": "gulp test-unit"
     },
-    "files": ["package.json", "LICENSE", "README.md", "tasks/**/*"],
-    "keywords": ["grunt", "typescript", "documentation"],
+    "files": [
+        "package.json",
+        "LICENSE",
+        "README.md",
+        "tasks/**/*"
+    ],
+    "keywords": [
+        "grunt",
+        "typescript",
+        "documentation"
+    ],
     "author": "Vamshi K Ponnapalli <vamshi.ponnapalli@gmail.com>",
     "license": "MIT",
     "devDependencies": {
-        "@vamship/build-utils": "0.1.0",
-        "@vamship/test-utils": "^2.4.7",
+        "@vamship/build-utils": "0.1.1",
+        "@vamship/test-utils": "^2.4.8",
         "ansi-colors": "^4.1.1",
         "chai": "^4.2.0",
         "chai-as-promised": "^7.1.1",
@@ -30,8 +39,8 @@
         "sinon-chai": "^3.4.0"
     },
     "dependencies": {
-        "@vamship/arg-utils": "^2.4.4",
-        "@vamship/error-types": "^1.7.6",
+        "@vamship/arg-utils": "^2.4.5",
+        "@vamship/error-types": "^1.7.7",
         "typedoc": "^0.16.2"
     },
     "peerDependencies": {
