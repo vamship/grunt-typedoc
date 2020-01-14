@@ -10,11 +10,8 @@
         "all": "gulp --series format lint test-unit clean",
         "test": "gulp test-unit"
     },
-    "keywords": [
-        "grunt",
-        "typescript",
-        "documentation"
-    ],
+    "files": ["package.json", "LICENSE", "README.md", "tasks/**/*"],
+    "keywords": ["grunt", "typescript", "documentation"],
     "author": "Vamshi K Ponnapalli <vamshi.ponnapalli@gmail.com>",
     "license": "MIT",
     "devDependencies": {
