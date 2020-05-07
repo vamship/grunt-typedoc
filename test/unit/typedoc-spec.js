@@ -14,7 +14,7 @@ const { ArgError } = require('@vamship/error-types').args;
 
 let _typedoc = _rewire('../../tasks/typedoc');
 
-describe('typedoc', function() {
+describe('typedoc', function () {
     let _gruntMock = null;
     let _typeDocMock = null;
 
@@ -28,12 +28,12 @@ describe('typedoc', function() {
         _gruntMock.instance.log = _gruntMock.__log.instance;
         _gruntMock.instance.filesSrc = [
             `${_testValues.getString('foo')}.ts`,
-            `${_testValues.getString('bar')}.ts`
+            `${_testValues.getString('bar')}.ts`,
         ];
 
         const applicationOpts = new ObjectMock().addMock('addReader');
         const application = new ObjectMock({
-            options: applicationOpts.instance
+            options: applicationOpts.instance,
         })
             .addMock('convert', () => {
                 return application.__conversionResult;
@@ -57,7 +57,7 @@ describe('typedoc', function() {
             __TypeDocReader: typeDocReader,
             Application: application.ctor,
             TSConfigReader: tsConfigReader.ctor,
-            TypeDocReader: typeDocReader.ctor
+            TypeDocReader: typeDocReader.ctor,
         };
 
         _typedoc.__set__('_typedoc', _typeDocMock);
@@ -92,7 +92,7 @@ describe('typedoc', function() {
             const [
                 taskName,
                 taskDescription,
-                task
+                task,
             ] = registerMultiTaskMethod.stub.args[0];
 
             expect(taskName).to.equal('typedoc');
@@ -107,7 +107,7 @@ describe('typedoc', function() {
         function _initTask(options) {
             if (!options) {
                 options = {
-                    out: './outdir'
+                    out: './outdir',
                 };
             }
             const registerMultiTaskMethod = _gruntMock.mocks.registerMultiTask;
@@ -128,7 +128,7 @@ describe('typedoc', function() {
                 const wrapper = () => {
                     _gruntMock.__options = {
                         out: value,
-                        json: value
+                        json: value,
                     };
                     task();
                 };
@@ -138,7 +138,7 @@ describe('typedoc', function() {
             inputs.forEach((json) => {
                 const wrapper = () => {
                     _gruntMock.__options = {
-                        out: './outdir'
+                        out: './outdir',
                     };
                     task();
                 };
@@ -148,7 +148,7 @@ describe('typedoc', function() {
             inputs.forEach((json) => {
                 const wrapper = () => {
                     _gruntMock.__options = {
-                        json: './out.json'
+                        json: './out.json',
                     };
                     task();
                 };
@@ -170,7 +170,7 @@ describe('typedoc', function() {
         it('should initialize an applications object with the specified options', () => {
             const expectedOptions = {
                 out: './outdir',
-                json: './out.json'
+                json: './out.json',
             };
             const task = _initTask(expectedOptions);
 
@@ -232,7 +232,7 @@ describe('typedoc', function() {
         it('should bootstrap the application with the specified options', () => {
             const expectedOptions = {
                 out: './outdir',
-                json: './out.json'
+                json: './out.json',
             };
             const task = _initTask(expectedOptions);
 
@@ -270,7 +270,7 @@ describe('typedoc', function() {
             const task = _initTask();
             const expectedInputFiles = [
                 `${_testValues.getString('foo')}.ts`,
-                `${_testValues.getString('bar')}.ts`
+                `${_testValues.getString('bar')}.ts`,
             ];
             _gruntMock.instance.filesSrc = expectedInputFiles;
 
@@ -289,7 +289,7 @@ describe('typedoc', function() {
             const task = _initTask();
             const expandedFileList = [
                 `${_testValues.getString('foo')}.ts`,
-                `${_testValues.getString('bar')}.ts`
+                `${_testValues.getString('bar')}.ts`,
             ];
             const applicationMock = _typeDocMock.__Application;
             applicationMock.__expandedFileList = expandedFileList;
@@ -317,7 +317,7 @@ describe('typedoc', function() {
             const out = _testValues.getString('out');
             const task = _initTask({
                 out,
-                json: undefined
+                json: undefined,
             });
             const conversionResult = {};
             const applicationMock = _typeDocMock.__Application;
@@ -346,7 +346,7 @@ describe('typedoc', function() {
             const json = _testValues.getString('json');
             const task = _initTask({
                 out: undefined,
-                json
+                json,
             });
             const conversionResult = {};
             const applicationMock = _typeDocMock.__Application;
