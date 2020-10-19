@@ -1,6 +1,6 @@
 {
     "name": "@vamship/grunt-typedoc",
-    "version": "1.7.4",
+    "version": "1.7.5",
     "description": "Grunt task to generate type docs for a given project",
     "repository": {
         "type": "git",
