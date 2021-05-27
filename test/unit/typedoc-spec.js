@@ -89,11 +89,8 @@ describe('typedoc', function () {
             _typedoc(_gruntMock.instance);
 
             expect(registerMultiTaskMethod.stub).to.have.been.calledOnce;
-            const [
-                taskName,
-                taskDescription,
-                task,
-            ] = registerMultiTaskMethod.stub.args[0];
+            const [taskName, taskDescription, task] =
+                registerMultiTaskMethod.stub.args[0];
 
             expect(taskName).to.equal('typedoc');
             expect(taskDescription).to.equal(
