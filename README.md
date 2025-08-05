@@ -1,6 +1,6 @@
 # @vamship/grunt-typedoc
 
-> [:warning:]
+> [!CAUTION]
 > This project is no longer actively maintained. It will remain
 > available for use, but no further updates are planned.
 
