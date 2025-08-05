@@ -1,5 +1,9 @@
 # @vamship/grunt-typedoc
 
+> [:warning:]
+> This project is no longer actively maintained. It will remain
+> available for use, but no further updates are planned.
+
 _Grunt task to generate documentation from typescript source files._
 
 This is a grunt wrapper for the [typedoc](http://typedoc.org) tool that allows
